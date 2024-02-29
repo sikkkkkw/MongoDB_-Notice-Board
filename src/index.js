@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import List from "./List";
 import Detail from "./Detail";
+import Update from "./Update";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/:id",
     element: <Detail />,
+  },
+  {
+    path: "/:id/edit",
+    element: <Update />,
   },
 ]);
 

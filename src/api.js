@@ -18,11 +18,28 @@ export async function apiGetNoticeList() {
 }
 
 //글 작성하기
-console.log();
+
 export async function apiPostNoticeWrite(formData) {
   try {
     console.log("API", formData);
     return await fetch(`${BASE_URL}/notice/write`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    }).then((res) => res.json());
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// 공지사항 업데이트
+export async function apiPostNoticeUpdate(props) {
+  const { formData, id } = props;
+  try {
+    console.log("API", formData);
+    return await fetch(`${BASE_URL}/notice/${id}/edit`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

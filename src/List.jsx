@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function List() {
   const { data } = useQuery("getList", apiGetNoticeList);
-  console.log(data);
+  // console.log(data);
   return (
     <div className="w-full flex justify-center py-16">
       <div className="max-w-5xl w-full flex flex-col gap-4">
