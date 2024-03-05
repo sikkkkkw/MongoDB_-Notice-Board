@@ -12,7 +12,6 @@ export default function Update() {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({
     // 중괄호가 나오면 객체가 나옴
@@ -26,9 +25,9 @@ export default function Update() {
   const { mutate, isLoading } = useMutation(apiPostNoticeUpdate, {
     onSuccess: (data) => {
       console.log(data);
-      reset();
+
       //리스트 페이지로 이동
-      navigate("/");
+      navigate(`/${id}`);
     },
   });
   const onSubmit = (formData) => {

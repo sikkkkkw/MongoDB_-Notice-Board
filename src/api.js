@@ -50,3 +50,17 @@ export async function apiPostNoticeUpdate(props) {
     console.log(error);
   }
 }
+//공지사항 삭제
+export async function apiPostNoticeDelete(id) {
+  // console.log(id);
+  try {
+    return await fetch(`${BASE_URL}/notice/${id}/delete`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => res.json());
+  } catch (error) {
+    console.log(error);
+  }
+}

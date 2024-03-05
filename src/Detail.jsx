@@ -1,10 +1,24 @@
-import { useQuery } from "react-query";
-import { Link, useParams } from "react-router-dom";
-import { apiGetNoticeDetail } from "./api";
+import { useMutation, useQuery } from "react-query";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { apiGetNoticeDetail, apiPostNoticeDelete } from "./api";
 
 export default function Detail() {
   const { id } = useParams();
   const { data } = useQuery(["getDetail", id], apiGetNoticeDetail);
+  const navigate = useNavigate();
+  const { mutate } = useMutation(apiPostNoticeDelete, {
+    onSuccess: (data) => {
+      if (data?.react === true) {
+        navigate("/");
+      }
+    },
+  });
+  const handleDelete = () => {
+    const ok = window.confirm("삭제");
+    if (ok) {
+      mutate(id);
+    }
+  };
   return (
     <div className="w-full flex justify-center py-16">
       <div className="max-w-5xl w-full flex flex-col gap-4 ">
@@ -17,7 +31,9 @@ export default function Detail() {
           <Link to={`/${id}/edit`} state={data?.data}>
             <button className="bg-green-500 px-4 py-2">수정</button>
           </Link>
-          <button className="bg-red-500">삭제</button>
+          <button onClick={handleDelete} className="bg-red-500">
+            삭제
+          </button>
         </div>
       </div>
     </div>
