@@ -1,7 +1,15 @@
-export default function InputBox({ name, type, placeholder }) {
+export default function InputBox({
+  name,
+  type,
+  placeholder,
+  register,
+  errorOption,
+  errors,
+}) {
   return (
     <div className="flex flex-col gap-1 relative">
       <input
+        {...register(`${name}`, errorOption)}
         type={type}
         placeholder=""
         className="input-custom peer
@@ -13,7 +21,7 @@ export default function InputBox({ name, type, placeholder }) {
       >
         {placeholder}
       </label>
-      <span className="text-red-500 text-sm">error</span>
+      {errors && <span className="text-red-500 text-sm">{errors}</span>}
     </div>
   );
 }
