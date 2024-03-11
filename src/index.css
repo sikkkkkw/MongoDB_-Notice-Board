@@ -10,12 +10,24 @@
 
 @layer components {
   .input-custom {
-    /*  태일윈드 적용 */
-    @apply h-10 px-4 rounded-md border-none ring-1 ring-neutral-200 bg-transparent
-    transition duration-300 focus:outline-none focus:ring-4 focus:ring-teal-500;
+    @apply h-10 px-4 rounded-md border-none ring-1 ring-neutral-200 bg-transparent transition duration-300 focus:outline-none focus:ring-4 focus:ring-teal-500;
   }
   .label-custom {
-    @apply absolute text-sm text-neutral-400 -translate-y-4 transform duration-300 top-1 left-3 z-10 bg-white px-2 origin-[0] scale-75 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-5 peer-placeholder-shown:-z-10
-    peer-focus:-translate-y-4 peer-focus:top-1 peer-focus:left-3 peer-focus:z-10 peer-focus:text-teal-500 peer-focus:scale-75;
+    @apply absolute text-sm text-neutral-400 -translate-y-4 transform duration-300 top-1 left-3 z-10 bg-white/100 px-2 origin-[0] scale-75 
+    peer-placeholder-shown:px-0 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-5 peer-placeholder-shown:-z-10 peer-placeholder-shown:bg-white/0 peer-focus:-translate-y-4 peer-focus:top-1 peer-focus:left-3 peer-focus:z-10 peer-focus:bg-white/100 peer-focus:text-teal-500 peer-focus:scale-75 peer-focus:px-2;
   }
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }

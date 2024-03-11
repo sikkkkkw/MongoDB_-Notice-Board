@@ -6,19 +6,23 @@ export default function Detail() {
   const { id } = useParams();
   const { data } = useQuery(["getDetail", id], apiGetNoticeDetail);
   const navigate = useNavigate();
+
   const { mutate } = useMutation(apiPostNoticeDelete, {
     onSuccess: (data) => {
-      if (data?.react === true) {
+      if (data?.result === true) {
         navigate("/");
       }
     },
   });
+
   const handleDelete = () => {
-    const ok = window.confirm("삭제");
+    const ok = window.confirm("삭제하시겠습니까?");
     if (ok) {
+      // 확인을 클릭을 했을 때 삭제 API 요청
       mutate(id);
     }
   };
+
   return (
     <div className="w-full flex justify-center py-16">
       <div className="max-w-5xl w-full flex flex-col gap-4 ">
@@ -27,11 +31,11 @@ export default function Detail() {
         <div>{data?.data?.writer}</div>
         <div>{data?.data?.createdAt}</div>
         <div>{data?.data?.description}</div>
-        <div className="flex gap-4 text-white ">
+        <div className="flex gap-4 text-white">
           <Link to={`/${id}/edit`} state={data?.data}>
             <button className="bg-green-500 px-4 py-2">수정</button>
           </Link>
-          <button onClick={handleDelete} className="bg-red-500">
+          <button onClick={handleDelete} className="bg-red-500 px-4 py-2">
             삭제
           </button>
         </div>

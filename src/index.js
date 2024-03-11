@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Write from "./Write";
 import "./index.css";
-import { QueryClient, QueryClientProvider } from "react-query";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
 import List from "./List";
+import Write from "./Write";
 import Detail from "./Detail";
 import Update from "./Update";
 import SignUp from "./routes/SignUp";
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "write",
+    path: "/write",
     element: <Write />,
   },
   {

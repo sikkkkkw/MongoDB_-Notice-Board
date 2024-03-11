@@ -5,7 +5,7 @@ import { timeFormat } from "./timeFormat";
 
 export default function List() {
   const { data } = useQuery("getList", apiGetNoticeList);
-  // console.log(data);
+  console.log(data);
   return (
     <div className="w-full flex justify-center py-16">
       <div className="max-w-5xl w-full flex flex-col gap-4">
@@ -19,7 +19,6 @@ export default function List() {
               <Link to={`/${item._id}`}>
                 <div>{item._id}</div>
               </Link>
-
               <div>{item.title}</div>
               <div>{item.description}</div>
               <div>{item.writer}</div>

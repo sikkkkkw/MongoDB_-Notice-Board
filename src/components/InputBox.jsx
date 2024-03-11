@@ -12,15 +12,10 @@ export default function InputBox({
         {...register(`${name}`, errorOption)}
         type={type}
         placeholder=""
-        className="input-custom peer
-      "
+        className={`input-custom peer ${errors && "ring-red-500 ring-4"}`}
       />
-      <label
-        className=" label-custom
-    "
-      >
-        {placeholder}
-      </label>
+      {/* 플레이스홀더 대체 */}
+      <label className="label-custom">{placeholder}</label>
       {errors && <span className="text-red-500 text-sm">{errors}</span>}
     </div>
   );
