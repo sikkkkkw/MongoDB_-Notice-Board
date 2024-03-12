@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import InputBox from "../components/InputBox";
 import Socials from "../components/Socials";
@@ -11,13 +11,28 @@ export default function SignUp() {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm();
-  const { mutate } = useMutation(apiPostRegister);
+  const navigate = useNavigate();
+
+  const { mutate } = useMutation(apiPostRegister, {
+    onSuccess: (data) => {
+      if (data.result === true) {
+        // 성공하면 로그인 페이지로 이동
+        // navigate("/users/login");
+      }
+    },
+    onSettled: (data) => {
+      console.log(data);
+      if (data?.result === false) {
+        setError("username", { message: data.message });
+      }
+    },
+  });
   const onValid = (formData) => {
     mutate(formData);
-    // console.log(formData);
   };
-
+  // console.log(data);
   return (
     <div className="w-full flex justify-center py-16">
       <div className="max-w-screen-sm w-full flex flex-col gap-8 px-4">
@@ -115,6 +130,9 @@ export default function SignUp() {
             <option value="4">독서</option>
           </select> */}
           {/* 콤보박스 취미 */}
+          {/* {data?.result === false && (
+            <span className="text-red-500 text-sm">{data?.message}</span>
+          )} */}
           <Button type="submit" text="회원가입" />
         </form>
         {/* 소셜 로그인 */}

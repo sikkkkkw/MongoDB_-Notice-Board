@@ -3,6 +3,8 @@ import InputBox from "../components/InputBox";
 import Button from "../components/Button";
 import Socials from "../components/Socials";
 import { useForm } from "react-hook-form";
+import { useMutation } from "react-query";
+import { apiPostLogin } from "../api";
 
 export default function LogIn() {
   const {
@@ -11,8 +13,9 @@ export default function LogIn() {
     handleSubmit,
   } = useForm();
 
+  const { mutate } = useMutation(apiPostLogin);
   const onValid = (formData) => {
-    console.log(formData);
+    mutate(formData);
   };
 
   return (
