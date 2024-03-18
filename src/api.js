@@ -93,7 +93,30 @@ export async function apiPostLogin(data) {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(data),
+    }).then((res) => res.json());
+  } catch (error) {
+    console.log(error);
+  }
+}
+// 로그인 후 userData 요청
+export async function apiGetUser() {
+  try {
+    return await fetch(`${BASE_URL}/users/login-success`, {
+      method: "GET",
+      credentials: "include",
+    }).then((res) => res.json());
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function apiPostLogout() {
+  try {
+    fetch(`${BASE_URL}/users/logout`, {
+      method: "POST",
+      credentials: "include",
     }).then((res) => res.json());
   } catch (error) {
     console.log(error);
