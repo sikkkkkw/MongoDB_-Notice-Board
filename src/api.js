@@ -122,3 +122,16 @@ export async function apiPostLogout() {
     console.log(error);
   }
 }
+//카카오 로그인 code 전달
+export async function apiKakaoLogin(props) {
+  const { code } = props.queryKey[1];
+  // console.log(code);
+  try {
+    return await fetch(`${BASE_URL}/users/socials/kakao?code=${code}`, {
+      method: "GET",
+      credentials: "include",
+    }).then((res) => res.json());
+  } catch (error) {
+    console.log(error);
+  }
+}

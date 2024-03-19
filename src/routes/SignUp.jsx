@@ -19,7 +19,7 @@ export default function SignUp() {
     onSuccess: (data) => {
       if (data.result === true) {
         // 성공하면 로그인 페이지로 이동
-        // navigate("/users/login");
+        navigate("/users/login");
       }
     },
     onSettled: (data) => {

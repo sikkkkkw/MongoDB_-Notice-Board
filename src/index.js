@@ -9,6 +9,8 @@ import Detail from "./Detail";
 import Update from "./Update";
 import SignUp from "./routes/SignUp";
 import LogIn from "./routes/LogIn";
+import Kakao from "./routes/Kakao";
+import Profile from "./routes/Profile";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,14 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <LogIn />,
+      },
+      {
+        path: "profile",
+        element: <Profile />,
+      },
+      {
+        path: "socials/kakao",
+        element: <Kakao />,
       },
     ],
   },
